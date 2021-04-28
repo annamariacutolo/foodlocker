@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useState } from 'react'
+import { useHistory } from "react-router-dom"
 
 const RegistrationForm = () => {
-    const [usernameReg, setUsernameReg] = useState('');
-    const [emailReg, setEmailReg] = useState('');
-    const [passwordReg, setPasswordReg] = useState('');
-    const [confirmPasswordReg, setConfirmPasswordReg] = useState('');
-    const [successMessageReg, setSuccessMessageReg] = useState(null);
+    const [usernameReg, setUsernameReg] = useState('')
+    const [emailReg, setEmailReg] = useState('')
+    const [passwordReg, setPasswordReg] = useState('')
+    const [confirmPasswordReg, setConfirmPasswordReg] = useState('')
+    const [successMessageReg, setSuccessMessageReg] = useState(null)
 
     const body = {
         'username': usernameReg,
@@ -15,68 +15,67 @@ const RegistrationForm = () => {
         'password2': confirmPasswordReg
     }
 
-    const history = useHistory();
+    const history = useHistory()
 
     const handleUsernameChange = (e) => {
-        setUsernameReg(e.target.value);        
+        setUsernameReg(e.target.value)     
     }
 
     const handleEmailChange = (e) => {
-        setEmailReg(e.target.value);
+        setEmailReg(e.target.value)
     }
 
     const handlePasswordChange = (e) => {
-        setPasswordReg(e.target.value);
+        setPasswordReg(e.target.value)
     }
 
     const handleConfirmPasswordChange = (e) => {
-        setConfirmPasswordReg(e.target.value);
+        setConfirmPasswordReg(e.target.value)
     }
     
     const sendDetailsToServer = () => {
         if (!(usernameReg.length && emailReg.length && passwordReg.length && confirmPasswordReg.length)) {
             alert('Missing Values');
-            setSuccessMessageReg('Please fill in the missing values.');
-            return;
-        }else if (passwordReg.length < 8) {
-            alert('Password must be at least 8 characters long');
-            setSuccessMessageReg('Password must be at least 8 characters long.');
-            return;
-        }else if (passwordReg !== confirmPasswordReg) {
-            alert('Passwords don\'t match');
-            setSuccessMessageReg('Passwords don\'t match.');
-            return;
-        }else {
+            setSuccessMessageReg('Please fill in the missing values.')
+            return
+        } else if (passwordReg.length < 8) {
+            alert('Password must be at least 8 characters long')
+            setSuccessMessageReg('Password must be at least 8 characters long.')
+            return
+        } else if (passwordReg !== confirmPasswordReg) {
+            alert('Passwords don\'t match')
+            setSuccessMessageReg('Passwords don\'t match.')
+            return
+        } else {
             const Options = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             };
-            fetch('http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/', Options)
+            fetch('/api/v1/dj-rest-auth/registration/', Options)
             .then(
                 function (response) {
                     if (response.status === 201) {
-                        alert(`Registration successful. Hello ${usernameReg}!`);
-                        setSuccessMessageReg(`Registration successful. Hello ${usernameReg}!`);
-                        setUsernameReg('');
-                        setEmailReg('');
-                        setPasswordReg('');
-                        setConfirmPasswordReg('');
-                        history.push('/');
+                        alert(`Registration successful. Hello ${usernameReg}!`)
+                        setSuccessMessageReg(`Registration successful. Hello ${usernameReg}!`)
+                        setUsernameReg('')
+                        setEmailReg('')
+                        setPasswordReg('')
+                        setConfirmPasswordReg('')
+                        history.push('/')
                     } else if (response.status === 400) {
-                        alert('Username or Email already exists.');
-                        setSuccessMessageReg('Registration unsuccessful. Username or Email already exists');
+                        alert('Username or Email already exists.')
+                        setSuccessMessageReg('Registration unsuccessful. Username or Email already exists')
                     }
                 }
-            
-            );
-        };
-    };
+            )
+        }
+    }
 
     const handleSubmitClick = (e) => {
-        e.preventDefault();
-        sendDetailsToServer();    
-    };
+        e.preventDefault()
+        sendDetailsToServer()    
+    }
 
     return (
         <div>
@@ -138,12 +137,10 @@ const RegistrationForm = () => {
             <div className='SuccessMessage'>
                 {successMessageReg}
             </div>    
-        </div>
-          
-            
+            </div>
         </div>
     )
 }
 
-export default RegistrationForm;
+export default RegistrationForm
 

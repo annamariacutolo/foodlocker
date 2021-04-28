@@ -3,22 +3,11 @@ import Button from './Button'
 import SearchRecipes from './SearchRecipes'
 
 const Search = () => {
-
-    
-    
-    // const onClick = () => {
-    //     window.location = '/'
-    //     console.log('go to home');
-    // }
-
-
-    // BELOW I HAVE DELETED onClick={onClick}
     return (
         <div>
             <Link to='/' style={{textDecoration: 'none'}} className="ButtonLink" >
-                <Button text="Browse Recipes" style={{cursor: 'pointer'}}/>
+                <Button text="Browse Recipes" style={{cursor: 'pointer'}} />
             </Link>
-            
             <SearchRecipes />
         </div>
     )

@@ -1,3 +1,3 @@
-# foodlocker
+# Food Locker
 Frontend project for RecipEZ's backend\
-Backend repo: https://github.com/HarryLam14/RecipEZ
+Updated backend repo: https://github.com/annamariacutolo/RecipEZ

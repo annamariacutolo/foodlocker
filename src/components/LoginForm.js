@@ -1,64 +1,64 @@
-import React, {useState} from 'react';
-import { useHistory } from "react-router-dom";
+import { useState } from 'react'
+import { useHistory } from "react-router-dom"
 
 const LoginForm = () => {
-    const [usernameLogin, setUsernameLogin] = useState('');
-    const [passwordLogin, setPasswordLogin] = useState('');
-    const [successMessageLogin, setSuccessMessageLogin] = useState(null);
+    const [usernameLogin, setUsernameLogin] = useState('')
+    const [passwordLogin, setPasswordLogin] = useState('')
+    const [successMessageLogin, setSuccessMessageLogin] = useState(null)
 
     const loginBody = {
         "username": usernameLogin,
         "password": passwordLogin
     }
 
-    const history = useHistory();
+    const history = useHistory()
 
     const handleUsernameChange = (e) => {
-        setUsernameLogin(e.target.value);
+        setUsernameLogin(e.target.value)
     }
 
     const handlePasswordChange = (e) => {
-        setPasswordLogin(e.target.value);
+        setPasswordLogin(e.target.value)
     }
 
     const handleSubmitClick = (e) => {
-        e.preventDefault();
-        sendLoginDetailsToServer();
+        e.preventDefault()
+        sendLoginDetailsToServer()
     }
 
     const sendLoginDetailsToServer = () => {
         if (!(usernameLogin.length && passwordLogin.length)) {
-            alert('Missing Values');
-            setSuccessMessageLogin('Please fill in the missing values.');
-            return;
-        }else if (passwordLogin.length < 8) {
-            alert('Password must be at least 8 characters long');
-            setSuccessMessageLogin('Password must be at least 8 characters long.');
-            setPasswordLogin('');
-            return;
-        }else {
+            alert('Missing Values')
+            setSuccessMessageLogin('Please fill in the missing values.')
+            return
+        } else if (passwordLogin.length < 8) {
+            alert('Password must be at least 8 characters long')
+            setSuccessMessageLogin('Password must be at least 8 characters long.')
+            setPasswordLogin('')
+            return
+        } else {
             const loginOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginBody)
-            };
-            fetch('http://127.0.0.1:8000/api/v1/dj-rest-auth/login/', loginOptions)
+            }
+            fetch('/api/v1/dj-rest-auth/login/', loginOptions)
             .then(
                 function (response) {
                     if (response.status === 200) {
-                        alert(`Login successful. Hello ${usernameLogin}!`);
-                        setSuccessMessageLogin(`Login successful. Hello ${usernameLogin}!`);
-                        setUsernameLogin('');
-                        setPasswordLogin('');
-                        history.push('/');
-                    }else if (response.status === 400) {
-                        alert('Login unsuccessful. Username and/or Password incorrect');
-                        setSuccessMessageLogin('Login unsuccessful. Username and/or Password incorrect');
-                        setPasswordLogin('');
-                    }else {
-                        alert('Sorry, an error has occured.');
-                        setSuccessMessageLogin('Sorry, an error has occured');
-                        setPasswordLogin('');                        
+                        alert(`Login successful. Hello ${usernameLogin}!`)
+                        setSuccessMessageLogin(`Login successful. Hello ${usernameLogin}!`)
+                        setUsernameLogin('')
+                        setPasswordLogin('')
+                        history.push('/')
+                    } else if (response.status === 400) {
+                        alert('Login unsuccessful. Username and/or Password incorrect')
+                        setSuccessMessageLogin('Login unsuccessful. Username and/or Password incorrect')
+                        setPasswordLogin('')
+                    } else {
+                        alert('Sorry, an error has occurred.')
+                        setSuccessMessageLogin('Sorry, an error has occurred')
+                        setPasswordLogin('')                       
                     }
                 }
             )
@@ -102,10 +102,9 @@ const LoginForm = () => {
             <div className='SuccessMessage'>
                 {successMessageLogin}
             </div>
-
         </div>
     )
 }
 
 
-export default LoginForm;
+export default LoginForm

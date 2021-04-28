@@ -1,6 +1,6 @@
-import { FaClock } from 'react-icons/fa';
+import { FaClock } from 'react-icons/fa'
 
-const SearchRecipesItem = ({recipe}) => {
+const SearchRecipesItem = ({ recipe }) => {
     const recipeName = (recipe.name).toUpperCase()
     return (
         <div className="SearchResult">
@@ -12,5 +12,5 @@ const SearchRecipesItem = ({recipe}) => {
     )
 }
 
-export default SearchRecipesItem;
+export default SearchRecipesItem
 

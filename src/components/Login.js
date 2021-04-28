@@ -1,9 +1,7 @@
-import React from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm'
 
 
 const Login = () => {
-
     return (
             <div>
                 <LoginForm />
@@ -11,4 +9,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Login

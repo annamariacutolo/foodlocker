@@ -8,7 +8,7 @@ const RecipeItem = ({ recipe }) => {
     const [pics, setPics]  = useState([])
 
     const onClick = () => {
-        setShowRecipe(!showRecipe);
+        setShowRecipe(!showRecipe)
     }
 
     const recipeName = (recipe.name).toUpperCase()
@@ -36,8 +36,8 @@ const RecipeItem = ({ recipe }) => {
         <div className='RecipeItem'>
             <img src={pics.map(pic => pic.src.small)} alt='img'/>
             <h3 onClick={onClick} className='RecipeTitle'>{recipeName}</h3>
-            <p>Rating: {recipe.rating} <FaStar style={{color: 'gold'}}/></p>
-            <p>Rated by: {recipe.n_ratings} <FaChild style={{color: 'green'}}/></p>
+            <p>Rating: {recipe.rating} <FaStar style={{color: 'gold'}} /></p>
+            <p>Rated by: {recipe.n_ratings} <FaChild style={{color: 'green'}} /></p>
             {showRecipe && <Recipe recipe={recipe} /> }           
         </div>
     )
@@ -48,4 +48,4 @@ RecipeItem.propTypes = {
     image: PropTypes.array
 }
 
-export default RecipeItem;
+export default RecipeItem

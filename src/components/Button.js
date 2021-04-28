@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types'
 
-// removed onClick as a prop.
-
 const Button = ({ text }) => {
     return (
-        <button className='Btn' style={{cursor:"pointer"}}>
+        <button className='Btn' style={{cursor: "pointer"}}>
             {text}
         </button>
     )

@@ -1,23 +1,22 @@
 import { FaFacebookSquare,  FaInstagram, FaGithub, FaTwitter, FaEnvelope } from 'react-icons/fa'
 
 const Footer = () => {
-
     return ( 
-        <footer className = 'Footer' >
+        <footer className = 'Footer'>
         <h1>
-            <FaFacebookSquare style={{cursor:"pointer"}} />
+            <FaFacebookSquare style={{cursor: "pointer"}} />
         </h1>
         <h1>
-            <FaInstagram style={{cursor:"pointer"}} />
+            <FaInstagram style={{cursor: "pointer"}} />
         </h1>
         <h1>
-            <FaTwitter style={{cursor:"pointer"}} />
+            <FaTwitter style={{cursor: "pointer"}} />
         </h1>
         <h1>
-            <FaEnvelope style={{cursor:"pointer"}} />
+            <FaEnvelope style={{cursor: "pointer"}} />
         </h1>
         <h1>
-            <FaGithub style={{cursor:"pointer"}} />    
+            <FaGithub style={{cursor: "pointer"}} />    
         </h1>
         <h5>Copyright© 2021 Food Locker</h5>
         </footer>

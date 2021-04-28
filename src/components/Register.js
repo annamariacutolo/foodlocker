@@ -1,9 +1,6 @@
-import React from 'react';
-import RegistrationForm from './RegistrationForm';
-
+import RegistrationForm from './RegistrationForm'
 
 const Register = () => {
-
     return (
             <div>
                     <RegistrationForm />
@@ -11,4 +8,4 @@ const Register = () => {
     )
 }
 
-export default Register;
+export default Register

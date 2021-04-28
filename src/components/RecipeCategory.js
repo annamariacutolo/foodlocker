@@ -1,10 +1,5 @@
-// import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import RecipeItem from './RecipeItem';
-
-
-// we dont want our recipes in the recipes component because we want to access these in other components.
-// we want to add it tou our app.js, (our global state), then we can pass them down as props.
+import RecipeItem from './RecipeItem'
 
 const RecipeCategory = ({ recipes, title }) => {
     return (
@@ -16,7 +11,6 @@ const RecipeCategory = ({ recipes, title }) => {
                 ))}
             </div>
         </div>
-        
     )
 }
 
@@ -25,4 +19,4 @@ RecipeCategory.propTypes = {
     recipes: PropTypes.array.isRequired,
 }
 
-export default RecipeCategory;
+export default RecipeCategory
